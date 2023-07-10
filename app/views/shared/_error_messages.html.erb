@@ -1,0 +1,6 @@
+<% if object.errors.any? %>
+    <%= object.errors.count %>error prohibited this book from being saved
+    <% object.errors.full_messages.each do |message| %>
+      <%= message %>
+    <% end %>
+<% end %>
