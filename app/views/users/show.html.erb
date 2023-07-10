@@ -1,0 +1,29 @@
+<main>
+  <p id="notice"><%= flash[:notice] %></p>
+  <div class='container px-5 px-sm-0'>
+    <div class='row'>
+      <div class='col-md-3'>
+        <%= render partial: "user_info", locals: { user: @user } %>
+      </div>
+      <div class='col-md-8 offset-md-1'>
+        <h2><%= "#{@user.name}さんのレビュー"%></h2>
+        <table class='table table-hover table-inverse'>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Title</th>
+              <th>Opinion</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>ここにタイトル</td>
+              <td>ここに本文</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>

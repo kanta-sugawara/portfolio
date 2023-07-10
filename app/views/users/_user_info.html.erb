@@ -1,0 +1,19 @@
+<h2>ユーザー情報</h2>
+<table class='table'>
+  <tr>
+    <%= attachment_image_tag user, :profile_image, fallback: "default-image.jpg" %>
+  </tr>
+  <tr>
+    <th>名前</th>
+    <th><%= user.name %></th>
+  </tr>
+  <tr>
+    <th>プロフィール</th>
+    <th><%= user.introduction %></th>
+  </tr>
+</table>
+<div class='row'>
+  <a class="btn btn-outline-secondary btn-block" href="<%= edit_user_path(user) %>">
+    <i class="fas fa-user-cog"></i>
+  </a>
+</div>
