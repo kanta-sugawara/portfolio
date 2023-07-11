@@ -2,4 +2,5 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   devise_for :users
   resources :users, only: [:index, :show, :edit, :update]
+  resources :reviews, only: [:index, :show, :create, :edit, :update, :destroy]
 end

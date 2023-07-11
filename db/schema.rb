@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_07_10_033536) do
+ActiveRecord::Schema.define(version: 2023_07_11_014713) do
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "title", null: false
+    t.text "body", null: false
+    t.float "rate", default: 0.0, null: false
+    t.integer "total_time", null: false
+    t.integer "total_charge", null: false
+    t.string "review_image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
