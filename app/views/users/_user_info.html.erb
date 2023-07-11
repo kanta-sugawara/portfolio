@@ -1,4 +1,9 @@
-<h2>ユーザー情報</h2>
+<% if user == current_user %>
+  <h2>マイプロフィール</h2>
+<% else %>
+ <h2>ユーザー情報</h2>
+<% end %>
+
 <table class='table'>
   <tr>
     <%= attachment_image_tag user, :profile_image, fallback: "default-image.jpg", size:'120x120' %>
@@ -13,7 +18,12 @@
   </tr>
 </table>
 <div class='row'>
+<% if user == current_user %>
   <a class="btn btn-outline-secondary btn-block" href="<%= edit_user_path(user) %>">
-    <i class="fas fa-user-cog"></i>
+    <i class="fas fa-user-cog">プロフィールを編集する</i>
+  </a>
+<% end %>
+  <a class="btn btn-primary btn-block" href="<%= new_review_path %>">
+    <i class="fas fa-edit">レビューを書く</i>
   </a>
 </div>

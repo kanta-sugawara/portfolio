@@ -1,0 +1,40 @@
+<main>
+  <p id="notice"><%= flash[:notice] %></p>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto'>
+        <h2>レビュー編集</h2>
+        <%= form_with model: @review, url: review_path(@review), local: true do |f| %>
+          <div class="form-group">
+            <%= f.label :title %>
+            <%= f.text_field :title, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :total_time %>
+            <%= f.number_field :total_time, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :total_charge %>
+            <%= f.number_field :total_charge, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :body %>
+            <%= f.text_area :body, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :rate %>
+            <%= f.number_field :rate, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :review_image %>
+            <%= f.file_field :review_image, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.submit '投稿する', class: "btn btn-success", data: { disable_with: "投稿する" }%>
+          </div>
+        <% end %>
+        <%= link_to "詳細へ戻る", review_path(@review) %>
+      </div>
+    </div>
+  </div>
+</main>
