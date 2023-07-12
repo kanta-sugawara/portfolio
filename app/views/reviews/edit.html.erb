@@ -10,23 +10,27 @@
             <%= f.text_field :title, class: "form-control" %>
           </div>
           <div class="form-group">
-            <%= f.label :total_time %>
-            <%= f.number_field :total_time, class: "form-control" %>
+            <%= f.label :"タイトル" %>
+            <%= f.text_field :title, class: "form-control" %>
           </div>
           <div class="form-group">
-            <%= f.label :total_charge %>
-            <%= f.number_field :total_charge, class: "form-control" %>
+            <%= f.label :"評価(100点)" %>
+            <%= f.number_field :rate, class: "form-control", style: "width: 150px;" %>
           </div>
           <div class="form-group">
-            <%= f.label :body %>
+            <%= f.label :"総課金額(円)" %>
+            <%= f.number_field :total_charge, class: "form-control", style: "width: 150px;" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :"総プレイ時間(時間)" %>
+            <%= f.number_field :total_time, class: "form-control", style: "width: 150px;" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :"本文" %>
             <%= f.text_area :body, class: "form-control" %>
           </div>
           <div class="form-group">
-            <%= f.label :rate %>
-            <%= f.number_field :rate, class: "form-control" %>
-          </div>
-          <div class="form-group">
-            <%= f.label :review_image %>
+            <%= f.label :"画像" %>
             <%= f.file_field :review_image, class: "form-control" %>
           </div>
           <div class="form-group">

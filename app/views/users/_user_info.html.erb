@@ -9,11 +9,9 @@
     <%= attachment_image_tag user, :profile_image, fallback: "default-image.jpg", size:'120x120' %>
   </tr>
   <tr>
-    <th>名前</th>
     <th><%= user.name %></th>
   </tr>
   <tr>
-    <th>プロフィール</th>
     <th><%= user.introduction %></th>
   </tr>
 </table>

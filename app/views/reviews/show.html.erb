@@ -7,14 +7,25 @@
       </div>
       <div class='col-md-8 offset-md-1'>
         <h2 class="mr-3"><%= @review.title %></h2>
-          <div class="d-flex align-items-center">
+          <div class="d-flex">
             <%= attachment_image_tag @review, :review_image, fallback: "default-image.jpg", class:"img-fluid" %>
             <div class="ml-3">
-              <p><%= @review.rate %></p>
-              <p><%= @review.total_charge %> 万円</p>
-              <p><%= @review.total_time %> 時間</p>
-            </div>  
+            <h4>このゲームの評価</h2>
+              <p class="font-weight-bold" style="font-size: 24px;" >
+                <%= @review.rate %>点 <span style="font-size: 12px;">/ 100点</span>
+              </p>
+              <p class="font-weight-bold" style="font-size: 24px;" >
+                <%= @review.total_charge %> 円<span style="font-size: 12px;">/ 総課金額</span>
+              </p>
+              <p class="font-weight-bold" style="font-size: 24px;" >
+               <%= @review.total_time %> 時間<span style="font-size: 12px;">/ 総プレイ時間</span>
+              </p>
+            </div>
           </div>
+          <% if current_user == @review.user %>
+            <td><%= link_to "編集する", edit_review_path(@review), class: "btn btn-sm btn-success" %></td>
+            <td><%= link_to "削除する", review_path(@review), class: "btn btn-sm btn-danger", method: :delete, "data-confirm" => "本当に削除しますか?" %></td>
+          <% end %>
           <div class="border p-3">
             <p><%= @review.body %></p>
           </div>
