@@ -20,6 +20,10 @@
   <a class="btn btn-outline-secondary btn-block" href="<%= edit_user_path(user) %>">
     <i class="fas fa-user-cog">プロフィールを編集する</i>
   </a>
+<% else %>
+  <a class="btn btn-outline-secondary btn-block" href="<%= user_path(user) %>">
+    <i class="fas fa-user">ユーザーページを見る</i>
+  </a>
 <% end %>
   <a class="btn btn-primary btn-block" href="<%= new_review_path %>">
     <i class="fas fa-edit">レビューを書く</i>

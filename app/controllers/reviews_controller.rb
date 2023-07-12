@@ -1,12 +1,8 @@
 class ReviewsController < ApplicationController
 
-  def index
-    @reviews = Review.all
-    @user = current_user
-  end
-
   def show
     @review = Review.find(params[:id])
+    @comments = Comment.new
   end
 
   def new
@@ -26,7 +22,7 @@ class ReviewsController < ApplicationController
   def edit
     @review = Review.find(params[:id])
     if current_user != @review.user
-      redirect_to reviews_path
+      redirect_to root_path
     end
   end
 
@@ -43,7 +39,7 @@ class ReviewsController < ApplicationController
   def destroy
     @review = Review.find(params[:id])
     @review.destroy
-    redirect_to reviews_path
+    redirect_to user_path(current_user)
   end
 
   private
