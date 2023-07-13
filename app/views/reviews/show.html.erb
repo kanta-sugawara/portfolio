@@ -8,7 +8,7 @@
       <div class='col-md-8 offset-md-1'>
         <h2 class="mr-3"><%= @review.title %></h2>
           <div class="d-flex">
-            <%= attachment_image_tag @review, :review_image, :fill, 100, 100, fallback: "default-image.jpg", class:"img-fluid" %>
+            <%= attachment_image_tag @review, :review_image, fallback: "default-image.jpg", size: "300x300" %>
             <div class="ml-3">
             <h4>このゲームの評価</h2>
               <p class="font-weight-bold" style="font-size: 24px;" >
@@ -23,8 +23,8 @@
             </div>
           </div>
           <% if current_user == @review.user %>
-            <td><%= link_to "編集する", edit_review_path(@review), class: "btn btn-sm btn-success" %></td>
-            <td><%= link_to "削除する", review_path(@review), class: "btn btn-sm btn-danger", method: :delete, "data-confirm" => "本当に削除しますか?" %></td>
+            <td><%= link_to "編集する", edit_review_path(@review), class: "btn btn-sm btn-success btn-block" %></td>
+            <td><%= link_to "削除する", review_path(@review), class: "btn btn-sm btn-danger btn-block", method: :delete, "data-confirm" => "本当に削除しますか?" %></td>
           <% end %>
           <p>コメント件数：<%= @review.comments.count %></p>
           <!-- favorites -->
@@ -47,7 +47,6 @@
               ♥<%= @review.favorites.count %> いいね
             </p>
           <% end %>
-          
           <p>作成日時 : <%= @review.created_at.strftime('%Y/%m/%d %H:%M:%S') %></p>
           <div class="border p-3">
             <p><%= @review.body %></p>

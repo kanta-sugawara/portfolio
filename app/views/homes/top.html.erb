@@ -17,11 +17,10 @@
         <% end %>
       </div>
       <div class='col-md-8 offset-md-1'>
-        <h2>新着レビュー</h2>
         <table class='table table-hover table-inverse'>
           <thead>
             <tr>
-              <th></th>
+              <th>新着レビュー</th>
               <th>タイトル</th>
               <th>本文</th>
               <th>評価</th>
@@ -33,7 +32,7 @@
               <tr>
                 <td>
                   <%= link_to user_path(review.user) do %>
-                    <%= attachment_image_tag review, :review_image, :fill, 60, 60, fallback: "default-image.jpg", class:"card-img-top"; %>
+                    <%= attachment_image_tag review, :review_image, fallback: "default-image.jpg", size: "100x100" %>
                     <%= review.user.name %>
                   <% end %>
                 </td>
