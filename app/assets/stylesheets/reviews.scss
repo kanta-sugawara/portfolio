@@ -1,3 +1,32 @@
 // Place all the styles related to the Reviews controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.flexbox {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.comment-container {
+  margin-bottom: 10px;
+}
+
+.comment-container .comments {
+  display: flex;
+  align-items: center;
+}
+
+.comment-container .comment-user {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-container .comment-info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+.comment-container .item {
+  margin-bottom: 5px;
+}

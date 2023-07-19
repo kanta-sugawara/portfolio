@@ -7,14 +7,6 @@
 <table class='table'>
   <tr>
     <%= attachment_image_tag user, :profile_image, fallback: "default-image.jpg", size:'100x100' %>
-  </tr>
-  <tr>
-    <th><%= user.name %></th>
-  </tr>
-  <tr>
-    <th><%= user.introduction %></th>
-  </tr>
-  <tr>
     <th>フォロー</th>
     <td>
       <%= link_to follows_user_path(user) do %>
@@ -30,6 +22,13 @@
       <% end %>
     </td>
   </tr>
+  <tr>
+    <th><%= user.name %></th>
+  </tr>
+  <tr>
+    <th><%= user.introduction %></th>
+  </tr>
+
   <% if user != current_user %>
   <tr>
     <td>
@@ -68,6 +67,12 @@
       <a class="btn btn-success btn-block" href="<%= new_review_path %>">
         <i class="fas fa-edit">レビューを書く</i>
       </a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <a class="btn btn-danger btn-block" href="<%= favorites_user_path(user)%>">
+        <i class="fas fa-heart">いいね一覧</i>
     </td>
   </tr>
 </table>
