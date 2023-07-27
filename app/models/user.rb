@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   attachment :profile_image
+  validates :email, presence: true, uniqueness: true
+  validates :name, presence: true, uniqueness: true, length: { minimum: 2, maximum: 20 }
+  validates :introduction, length: { maximum: 100 }
   has_many :reviews, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy

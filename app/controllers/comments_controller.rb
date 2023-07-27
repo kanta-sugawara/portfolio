@@ -7,9 +7,10 @@ class CommentsController < ApplicationController
       @comment = @review.comments.build(comment_params)
       @comment.user = current_user
       if @comment.save
-        flash[:notice] = "コメントを投稿しました。"
+        flash[:notice] = "コメントを投稿しました"
         redirect_to @review
       else
+        flash[:notice] = "コメントの保存に失敗しました。エラー内容を確認してください"
         render 'reviews/show'
       end
     end

@@ -10,79 +10,74 @@
           <div class="d-flex">
             <%= attachment_image_tag @review, :review_image, fallback: "default-image.jpg", size: "300x300" %>
             <div class="ml-3">
-            <h4>このゲームの評価</h2>
-              <p class="font-weight-bold" style="font-size: 24px;" >
-                <%= @review.rate %>点 <span style="font-size: 12px;">/ 10点</span>
-              </p>
-              <p class="font-weight-bold" style="font-size: 24px;" >
-                <%= @review.total_charge %> 円<span style="font-size: 12px;">/ 総課金額</span>
-              </p>
-              <p class="font-weight-bold" style="font-size: 24px;" >
-               <%= @review.total_time %> 時間<span style="font-size: 12px;">/ 総プレイ時間</span>
-              </p>
+              <h4>このゲームの評価</h4>
+              <ul class="game-data" style="font-size: 24px; line-height: 1.5;">
+                <li><%= @review.rate %><span style="font-size: 18px;">点 / 10点</span></li>
+                <li><%= @review.total_charge %><span style="font-size: 18px;">円 / 総課金額</span></li>
+                <li><%= @review.total_time %><span style="font-size: 18px;">時間 / 総プレイ時間</span></li>
+              </ul>
+              <p class="comment-count">コメント件数：<%= @review.comments.count %></p>
+              <% if @review.user != current_user %>
+                <% if @review.favorited_by?(current_user) %>
+                  <p>
+                    <%= link_to review_favorites_path(@review), method: :delete, class: "btn btn-sm btn-danger" do %>
+                      ♥<%= @review.favorites.count %> いいね
+                    <% end %>
+                  </p>
+                  <% else %>
+                  <p>
+                    <%= link_to review_favorites_path(@review), method: :post, class: "btn btn-sm btn-danger" do %>
+                      ♡<%= @review.favorites.count %> いいね
+                    <% end %>
+                  </p>
+                <% end %>
+              <% else %>
+                <p>
+                  ♥<%= @review.favorites.count %> いいね
+                </p>
+              <% end %>
             </div>
           </div>
-          <% if current_user == @review.user %>
-            <td><%= link_to "編集する", edit_review_path(@review), class: "btn btn-sm btn-primary btn-block" %></td>
-            <td><%= link_to "削除する", review_path(@review), class: "btn btn-sm btn-danger btn-block", method: :delete, "data-confirm" => "本当に削除しますか?" %></td>
-          <% end %>
-          <p>コメント件数：<%= @review.comments.count %></p>
-          <!-- favorites -->
-          <% if @review.user != current_user %>
-            <% if @review.favorited_by?(current_user) %>
-              <p>
-                <%= link_to review_favorites_path(@review), method: :delete do %>
-                  ♥<%= @review.favorites.count %> いいね
-                <% end %>
-              </p>
-              <% else %>
-              <p>
-                <%= link_to review_favorites_path(@review), method: :post do %>
-                  ♡<%= @review.favorites.count %> いいね
-                <% end %>
-              </p>
-            <% end %>
-          <% else %>
-            <p>
-              ♥<%= @review.favorites.count %> いいね
-            </p>
-          <% end %>
           <p>作成日時 : <%= @review.created_at.strftime('%Y/%m/%d %H:%M:%S') %></p>
-          <div class="border p-3">
+          <div class="d-flex">
+          <% if current_user == @review.user %>
+            <div class="mr-2">
+              <%= link_to edit_review_path(@review), class: "btn btn-sm btn-secondary" do %>
+                <i class="fas fa-edit"> 編集する</i>
+              <% end %>
+            </div>
+            <div>
+              <%= link_to review_path(@review), class: "btn btn-sm btn-danger", method: :delete, "data-confirm" => "本当に削除しますか?"  do %>
+               <i class="fas fa-trash"> 削除する</i>
+              <% end %>
+            </div>
+          <% end %>
+          </div>
+          <div class="main-body">
             <p><%= @review.body %></p>
           </div>
 
-          <h4>コメント</h4>
+          <h4 class="comment-title">コメント</h4>
           <% @review.comments.each do |comment| %>
-            <div class="comment-container">
-              <div class="col d-flex align-items-center border">
-                <div class="comments">
-                  <div class="flexbox">
-                    <div class="item">
-                      <%= attachment_image_tag comment.user, :profile_image, fallback: "default-image.jpg", size:'100x100' %>
-                    </div>
-                    <div class="item">
-                      <%= comment.user.name %>
-                    </div>
-                  </div>
-                  <div class="flexbox">
-                    <div class="item">
-                      <%= comment.body %>
-                    </div>
-                    <div class="item">
-                      <%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
-                    </div>
-                  </div>
+            <div class="balloon5">
+              <div class="faceicon">
+                <p><%= attachment_image_tag comment.user, :profile_image, fallback: "default-image.jpg", size:'100x100', class: "rounded-circle" %></p>
+                <p class="text-center"><%= comment.user.name %></p>
+              </div>
+              <div class="chatting">
+                <div class="says">
+                  <p><%= comment.body %></p>
+                  <p><%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %></p>
                 </div>
               </div>
-            </div>
+          </div>
           <% end %>
-
             <% if @review.user != current_user %>
-              <%= form_with(model: [ @review, @comments ], url: review_comments_path(@review), local: true) do |form| %>
+              <%= form_with(model: [ @review, @comment ], url: review_comments_path(@review), local: true) do |form| %>
+                <%= render partial: "shared/error_messages", locals: { object: @comment } %>
                 <div class="form-group mt-3">
                   <%= form.label :"コメントを入力してください" %>
-                  <%= form.text_area :body, class: "form-control" %>
+                  <%= form.text_area :body, placeholder: "50文字以内", class: "form-control" %>
                 </div>
                 <div class="form-group">
                   <%= form.submit "コメントする", class: "btn btn-primary" %>

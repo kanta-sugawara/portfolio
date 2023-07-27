@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @following_users = @user.following_users
     @follower_users = @user.follower_users
-    @reviews = @user.reviews.page(params[:page]).reverse_order
+    @reviews = @user.reviews.page(params[:page]).reverse_order.per(9)
   end
 
   def edit
@@ -41,8 +41,9 @@ class UsersController < ApplicationController
   end
 
   def favorites
+    @user = User.find(params[:id])
     favorites = Favorite.where(user_id: @user.id).pluck(:review_id)
-    @favorite_reviews = Review.find(favorites)
+    @favorite_reviews = Review.where(id: favorites).page(params[:page]).reverse_order.per(9)
   end
 
   private

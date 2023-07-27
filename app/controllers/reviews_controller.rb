@@ -1,8 +1,12 @@
 class ReviewsController < ApplicationController
 
+  def index
+    @user = current_user
+  end
+
   def show
     @review = Review.find(params[:id])
-    @comments = Comment.new
+    @comment = Comment.new
   end
 
   def new

@@ -1,6 +1,10 @@
 <% if object.errors.any? %>
-    <%= object.errors.count %>error prohibited this book from being saved
-    <% object.errors.full_messages.each do |message| %>
-      <%= message %>
-    <% end %>
+  <div id="error_explanation" class="alert alert-danger">
+    <h4><%= pluralize(object.errors.count, "error") %> prohibited this record from being saved:</h4>
+    <ul>
+      <% object.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
