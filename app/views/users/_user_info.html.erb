@@ -8,7 +8,7 @@
   </div>
 <% end %>
 
-<div class="card" style="width: 18rem;">
+<div class="card" style="width: 16rem;">
   <%= attachment_image_tag user, :profile_image, fallback: "default-image.jpg", size: "100x100", class: "rounded-circle mx-auto mt-3" %>
   <div class="card-body">
     <h5 class="card-title text-center"><%= user.name %></h5>
@@ -34,36 +34,51 @@
       </tr>
     </table>
 
-    <% if user != current_user %>
-      <div class="d-grid">
+    <div class="d-grid">
+  <% if user != current_user %>
+    <div class="row">
+      <div class="col mb-2">
         <% if current_user.following?(user) %>
           <%= link_to user_relationships_path(user.id), method: :delete, class: "btn btn-secondary btn-block" do %>
             <i class="fas fa-user-minus"></i> フォロー解除
           <% end %>
         <% else %>
-          <%= link_to user_relationships_path(user.id), method: :post, class: "btn btn-primary btn-block" do %>
+          <%= link_to user_relationships_path(user.id), method: :post, class: "btn btn-info btn-block" do %>
             <i class="fas fa-user-plus"></i> フォローする
           <% end %>
         <% end %>
       </div>
-    <% end %>
-
-    <% if current_user == user %>
-      <a class="btn btn-secondary btn-block" href="<%= edit_user_path(user) %>">
-        <i class="fas fa-user"></i> プロフィール編集
-      </a>
-    <% else %>
-      <a class="btn btn-primary btn-block" href="<%= user_path(user) %>">
-        <i class="fas fa-user"></i> ユーザーページ
-      </a>
-    <% end %>
-
-    <a class="btn btn-success btn-block" href="<%= new_review_path %>">
-      <i class="fas fa-edit"></i> レビューを書く
-    </a>
-
-    <a class="btn btn-danger btn-block" href="<%= favorites_user_path(user) %>">
-      <i class="fas fa-heart"></i> いいね一覧
-    </a>
+    </div>
+  <% end %>
+      <div class="row">
+        <div class="col mb-2">
+          <% if current_user == user %>
+            <a class="btn btn-secondary btn-block" href="<%= edit_user_path(user) %>">
+              <i class="fas fa-user"></i> プロフィール編集
+            </a>
+          <% else %>
+            <a class="btn btn-primary btn-block" href="<%= user_path(user) %>">
+              <i class="fas fa-user"></i> ユーザーページ
+            </a>
+          <% end %>
+        </div>
+      </div>
+    
+      <div class="row">
+        <div class="col mb-2">
+          <a class="btn btn-success btn-block" href="<%= new_review_path %>">
+            <i class="fas fa-edit"></i> レビューを書く
+          </a>
+        </div>
+      </div>
+    
+      <div class="row">
+        <div class="col">
+          <a class="btn btn-danger btn-block" href="<%= favorites_user_path(user) %>">
+            <i class="fas fa-heart"></i> いいね一覧
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
