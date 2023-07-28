@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        name: "名前"
+        password: "パスワード"
+        password_confirmation: "パスワード確認"
+        email: "メールアドレス"
+        introduction: "プロフィール文章"
+        profile_image: "プロフィール画像"
+      review:
+        title: "レビュータイトル"
+        body: "レビュー本文"
+        total_charge: "総課金額"
+        total_time: "総プレイ時間"
