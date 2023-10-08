@@ -1,0 +1,16 @@
+<div class='text-center'>
+  <h1>あのゲームどのくらい<br>
+  課金するんだろう？</h1>
+  <p>気になるゲームの課金額も分かるレビューサイトです</p>
+  <% if user_signed_in? %>
+    <%= link_to "レビューを見る", '/homes/top', class: "btn btn-sm btn-warning", method: :get %>
+  <% else %>
+    <%= link_to "レビューを見る", '/homes/top', class: "btn btn-sm btn-warning", method: :get %>
+    <%= link_to "ログインする", user_session_path,class: "btn btn-sm btn-primary", method: :get %>
+    <%= link_to "ユーザー登録する", new_user_registration_path, class: "btn btn-sm btn-danger", method: :get %>
+  <% end %>
+  <div class="about-image" style="padding-top: 20px;">
+    <%= image_tag 'game_about_image.png', size: "800x600" %>
+    <%= image_tag 'about_sample_image.png', size: "800x600" %>
+  </div>
+</div>
