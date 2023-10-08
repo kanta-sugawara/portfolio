@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   get 'comments/create'
   get 'comments/destroy'
-  root to: 'homes#top'
+  get 'homes/top'
+  root to: 'homes#about'
   devise_for :users
   resources :users, only: [:index, :show, :edit, :update] do
    member do
