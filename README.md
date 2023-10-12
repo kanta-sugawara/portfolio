@@ -27,7 +27,7 @@ https://portfolio-sugawara-902862d127dc.herokuapp.com/
 
 ## 言語・フレームワーク  
 `Ruby 2.6.6`  
-`Rails 5.2.5`
+`Ruby on Rails 5.2.5`
 
 ## インフラ
 AWS
