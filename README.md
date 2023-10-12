@@ -26,3 +26,4 @@ https://portfolio-sugawara-902862d127dc.herokuapp.com/
   * キーワード検索機能
 
 ## 言語・フレームワーク  
+`Ruby 2.6.6`
