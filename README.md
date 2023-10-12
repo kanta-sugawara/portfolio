@@ -1,24 +1,14 @@
 # カキンレビュー
+気になるゲームの課金額が分かるレビューサイトです
+##　URL
+https://portfolio-sugawara-902862d127dc.herokuapp.com/
+##概要
+ゲームアプリの課金額が表示されるレビューサイトです<br>
+レビューには、本文の他にプレイ時間や評価を入力することができます<br>
+そして各レビューには課金額を入力することができ、気になるゲームの課金額がわかります<br>
+「あのゲームが気になる」「一体、どのくらい課金するんだろう」<br>
+これらが知りたい方はぜひご利用ください！
+##機能
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##言語・フレームワーク
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
