@@ -1,5 +1,6 @@
 # カキンレビュー
 気になるゲームの課金額が分かるレビューサイトです  
+ ![about_sample_image](https://user-images.githubusercontent.com/135586921/276156961-7f5ac749-4560-45b2-bfac-41b9307838d9.png)
   
 ## URL
 https://portfolio-sugawara-902862d127dc.herokuapp.com/  
